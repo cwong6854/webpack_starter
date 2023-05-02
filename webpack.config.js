@@ -5,13 +5,13 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isProduction = process.env.NODE_ENV === "production";
 
 module.exports = {
-  target: "web",
+  target: isProduction ? "browserslist" : "web",
   mode: isProduction ? "production" : "development",
 
   module: {
     rules: [
       {
-        test: /\.s?css$/i,
+        test: /\.(s[ac]|c)ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {
